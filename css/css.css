@@ -288,8 +288,8 @@ main {
 #search-input,
 #genre-select,
 #sort-select,
-#year-from,
-#year-to,
+#players-min,
+#players-max,
 #rating-from,
 #rating-to {
   background: var(--bg);
@@ -305,8 +305,8 @@ main {
 #search-input:focus,
 #genre-select:focus,
 #sort-select:focus,
-#year-from:focus,
-#year-to:focus,
+#players-min:focus,
+#players-max:focus,
 #rating-from:focus,
 #rating-to:focus {
   outline: none;
@@ -315,8 +315,8 @@ main {
 }
 
 #search-input::placeholder,
-#year-from::placeholder,
-#year-to::placeholder,
+#players-min::placeholder,
+#players-max::placeholder,
 #rating-from::placeholder,
 #rating-to::placeholder {
   color: var(--text);
@@ -379,7 +379,7 @@ footer {
 /* =====================
    MOVIE GRID & CARDS
    ===================== */
-#movie-list {
+#game-list {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: clamp(1.5rem, 3vw, 2.5rem);
@@ -388,22 +388,22 @@ footer {
   margin-right: 3rem;
 }
 @media (min-width: 600px) {
-  #movie-list {
+  #game-list {
     grid-template-columns: 1fr 1fr;
   }
 }
 @media (min-width: 992px) {
-  #movie-list {
+  #game-list {
     grid-template-columns: 1fr 1fr 1fr;
   }
 }
 @media (min-width: 1400px) {
-  #movie-list {
+  #game-list {
     grid-template-columns: 1fr 1fr 1fr 1fr;
   }
 }
 
-.movie-card {
+.game-card {
   background: var(--bg-card);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
@@ -413,18 +413,18 @@ footer {
   border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-.movie-card:hover {
+.game-card:hover {
   transform: translateY(-8px) scale(1.02);
   box-shadow: var(--shadow-lg);
   border-color: var(--white);
 }
 
-.movie-card:focus {
+.game-card:focus {
   outline: 3px solid var(--white);
   outline-offset: 2px;
 }
 
-.movie-poster {
+.game-poster {
   width: 100%;
   height: auto;
   object-fit: cover;
@@ -432,15 +432,15 @@ footer {
   transition: var(--transition);
 }
 
-.movie-card:hover .movie-poster {
+.game-card:hover .game-poster {
   transform: scale(1.05);
 }
 
-.movie-info {
+.game-info {
   padding: 1.5rem;
 }
 
-.movie-info h3 {
+.game-info h3 {
   font-size: clamp(1.125rem, 2vw, 1.375rem);
   font-weight: 600;
   color: var(--text);
@@ -451,7 +451,7 @@ footer {
   margin-bottom: 0.5rem;
 }
 
-.movie-year {
+.game-shelf {
   color: var(--white);
   font-size: 0.875rem;
   background: var(--red);
@@ -460,13 +460,13 @@ footer {
   white-space: nowrap;
 }
 
-.movie-genre {
+.game-genre {
   color: var(--text);
   font-size: 0.9rem;
   margin-bottom: 0.75rem;
 }
 
-.movie-rating {
+.game-rating {
   color: var(--text);
   font-weight: 600;
   margin-bottom: 0.5rem;
@@ -475,23 +475,23 @@ footer {
   gap: 0.25rem;
 }
 
-.movie-rating::before {
+.game-rating::before {
   content: "⭐";
 }
 
-.movie-director {
+.game-players {
   color: var(--text);
   font-size: 0.875rem;
 }
 
-.movie-director strong {
+.game-players strong {
   color: var(--text);
 }
 
 /* =====================
-   MOVIE DIALOG
+   GAME DIALOG
    ===================== */
-dialog#movie-dialog {
+dialog#game-dialog {
   border: none;
   border-radius: var(--radius);
   box-shadow: var(--shadow-lg);
@@ -505,7 +505,7 @@ dialog#movie-dialog {
   margin: auto;
 }
 
-dialog#movie-dialog::backdrop {
+dialog#game-dialog::backdrop {
   background: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(8px);
 }
@@ -554,7 +554,7 @@ dialog#movie-dialog::backdrop {
   }
 }
 
-#dialog-content img.movie-poster {
+#dialog-content img.game-poster {
   width: 100%;
   height: auto;
   max-height: 500px;
@@ -564,7 +564,7 @@ dialog#movie-dialog::backdrop {
 }
 
 @media (max-width: 768px) {
-  #dialog-content img.movie-poster {
+  #dialog-content img.game-poster {
     max-width: 300px;
     margin: 0 auto;
   }
@@ -584,7 +584,7 @@ dialog#movie-dialog::backdrop {
   margin: 0 0 1rem 0;
 }
 
-#dialog-content .movie-year {
+#dialog-content .game-shelf {
   display: inline-block;
   background: var(--grey);
   color: var(--red);
@@ -606,13 +606,13 @@ dialog#movie-dialog::backdrop {
   font-weight: 600;
 }
 
-#dialog-content .movie-genre {
+#dialog-content .game-genre {
   color: var(--red);
   font-weight: 500;
   font-size: 1.1rem;
 }
 
-#dialog-content .movie-rating {
+#dialog-content .game-rating {
   color: var(--text);
   font-weight: 600;
   font-size: 1.125rem;
@@ -622,12 +622,12 @@ dialog#movie-dialog::backdrop {
 }
 
 @media (max-width: 768px) {
-  #dialog-content .movie-rating {
+  #dialog-content .game-rating {
     justify-content: center;
   }
 }
 
-.movie-description {
+.game-description {
   color: var(--white) !important;
   font-size: 1.1rem !important;
   line-height: 1.7 !important;
@@ -735,11 +735,11 @@ dialog#movie-dialog::backdrop {
    RESPONSIVE & ACCESSIBILITY
    ===================== */
 @media (max-width: 480px) {
-  #movie-list {
+  #game-list {
     grid-template-columns: 1fr;
     gap: 1.5rem;
   }
-  .movie-card {
+  .game-card {
     max-width: 350px;
     margin: 0 auto;
   }
@@ -749,7 +749,7 @@ dialog#movie-dialog::backdrop {
 }
 
 /* Focus styles for keyboard navigation */
-.movie-card:focus-visible,
+.game-card:focus-visible,
 #close-dialog:focus-visible {
   outline: 3px solid var(--red);
   outline-offset: 2px;
@@ -759,11 +759,11 @@ dialog#movie-dialog::backdrop {
    DARK MODE ADJUSTMENTS
    ===================== */
 @media (prefers-color-scheme: dark) {
-  .movie-year {
+  .game-shelf {
     background: var(--red);
     color: var(--red);
   }
-  #dialog-content .movie-year {
+  #dialog-content .game-shelf {
     background: var(--red);
     color: var(--red);
   }

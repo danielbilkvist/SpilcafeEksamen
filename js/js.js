@@ -24,9 +24,9 @@ function initApp() {
   const sortSelect = document.querySelector("#sort-select");
   if (sortSelect) sortSelect.addEventListener("change", filterGames);
 
-  // map year inputs to playtime filter (if present in HTML)
-  const playFrom = document.querySelector("#year-from");
-  const playTo = document.querySelector("#year-to");
+  // map players inputs to playtime filter (if present in HTML)
+  const playFrom = document.querySelector("#players-min");
+  const playTo = document.querySelector("#players-max");
   if (playFrom) playFrom.addEventListener("input", filterGames);
   if (playTo) playTo.addEventListener("input", filterGames);
 
@@ -77,17 +77,17 @@ function renderIntroCard(game) {
   const html = `
     <article class="ugens-spil" tabindex="0">
       ${INTRO_BADGE_TEXT ? `<span class="corner-badge">${INTRO_BADGE_TEXT}</span>` : ''}
-      <img src="${game.image}" alt="Poster of ${game.title}" class="movie-poster" />
-      <div class="movie-info">
-        <h3>${game.title}  <p class="movie-rating">${game.rating}</p> <span class="movie-year">${game.shelf ? '('+game.shelf+')' : ''}</span></h3>
+      <img src="${game.image}" alt="Poster of ${game.title}" class="game-poster" />
+      <div class="game-info">
+        <h3>${game.title}  <p class="game-rating">${game.rating}</p> <span class="game-shelf">${game.shelf ? '('+game.shelf+')' : ''}</span></h3>
       </div>
     </article>
   `;
   intro.insertAdjacentHTML('beforeend', html);
 }
-//        <p class="movie-genre">${game.genre}</p>
-//        <p class="movie-director"><strong>Players:</strong> ${game.players.min}-${game.players.max} • <strong>Playtime:</strong> ${game.playtime}m</p>
-//        <p class="movie-description">${truncate(game.description, 140)}</p>
+//        <p class="game-genre">${game.genre}</p>
+//        <p class="game-director"><strong>Players:</strong> ${game.players.min}-${game.players.max} • <strong>Playtime:</strong> ${game.playtime}m</p>
+//        <p class="game-description">${truncate(game.description, 140)}</p>
 
 function truncate(str, n) {
   return str && str.length > n ? str.slice(0, n-1) + '…' : str;
@@ -95,7 +95,7 @@ function truncate(str, n) {
 
 // Display games list
 function displayGames(games) {
-  const list = document.querySelector("#movie-list");
+  const list = document.querySelector("#game-list");
   if (!list) return;
   list.innerHTML = "";
   if (games.length ===0) {
@@ -107,18 +107,18 @@ function displayGames(games) {
 }
 
 function displayGame(game) {
-  const list = document.querySelector("#movie-list");
+  const list = document.querySelector("#game-list");
   if (!list) return;
 
   const html = `
-    <article class="movie-card" tabindex="0">
-      <img src="${game.image}" alt="Poster of ${escapeHtml(game.title)}" class="movie-poster" />
-      <div class="movie-info">
-        <h3>${escapeHtml(game.title)} <span class="movie-year">${game.shelf ? ''+escapeHtml(game.shelf)+'' : ''}</span></h3>
-        <p class="movie-genre">${escapeHtml(game.genre)}</p>
-        <p class="movie-rating"> ${game.rating}</p>
-        <p class="movie-director"><strong>Players:</strong> ${game.players.min}-${game.players.max} • <strong>Playtime:</strong> ${game.playtime}m</p>
-        <p class="movie-description">${truncate(escapeHtml(game.description), 140)}</p>
+    <article class="game-card" tabindex="0">
+      <img src="${game.image}" alt="Poster of ${escapeHtml(game.title)}" class="game-poster" />
+      <div class="game-info">
+        <h3>${escapeHtml(game.title)} <span class="game-shelf">${game.shelf ? ''+escapeHtml(game.shelf)+'' : ''}</span></h3>
+        <p class="game-genre">${escapeHtml(game.genre)}</p>
+        <p class="game-rating"> ${game.rating}</p>
+        <p class="game-players"><strong>Players:</strong> ${game.players.min}-${game.players.max} • <strong>Playtime:</strong> ${game.playtime}m</p>
+        <p class="game-description">${truncate(escapeHtml(game.description), 140)}</p>
       </div>
     </article>
   `;
@@ -154,19 +154,19 @@ function showGameModal(game) {
   const dialogContent = document.querySelector('#dialog-content');
   if (!dialogContent) return;
   dialogContent.innerHTML = `
-    <img src="${game.image}" alt="Poster af ${escapeHtml(game.title)}" class="movie-poster">
+    <img src="${game.image}" alt="Poster af ${escapeHtml(game.title)}" class="game-poster">
     <div class="dialog-details">
       <h2>${escapeHtml(game.title)}</h2>
       <p><strong>Players:</strong> ${game.players.min} - ${game.players.max}</p>
       <p><strong>Playtime:</strong> ${game.playtime} minutes</p>
-      <p class="movie-rating">⭐ ${game.rating}</p>
+      <p class="game-rating">⭐ ${game.rating}</p>
       <p><strong>Shelf:</strong> ${escapeHtml(game.shelf || '-')}</p>
       <p><strong>Difficulty:</strong> ${escapeHtml(game.difficulty || '-')}</p>
       <p><strong>Genre:</strong> ${escapeHtml(game.genre || '-')}</p>
-      <div class="movie-description">${escapeHtml(game.rules || game.description || '')}</div>
+      <div class="game-description">${escapeHtml(game.rules || game.description || '')}</div>
     </div>
   `;
-  const dlg = document.querySelector('#movie-dialog');
+  const dlg = document.querySelector('#game-dialog');
   if (dlg && typeof dlg.showModal === 'function') dlg.showModal();
 }
 
@@ -174,8 +174,8 @@ function clearAllFilters() {
   const search = document.querySelector('#search-input'); if (search) search.value = '';
   const genre = document.querySelector('#genre-select'); if (genre) genre.value = 'all';
   const sort = document.querySelector('#sort-select'); if (sort) sort.value = 'none';
-  const y1 = document.querySelector('#year-from'); if (y1) y1.value = '';
-  const y2 = document.querySelector('#year-to'); if (y2) y2.value = '';
+  const y1 = document.querySelector('#players-min'); if (y1) y1.value = '';
+  const y2 = document.querySelector('#players-max'); if (y2) y2.value = '';
   const r1 = document.querySelector('#rating-from'); if (r1) r1.value = '';
   const r2 = document.querySelector('#rating-to'); if (r2) r2.value = '';
   filterGames();
@@ -187,9 +187,9 @@ function filterGames() {
   const genreValue = document.querySelector('#genre-select')?.value || 'all';
   const sortValue = document.querySelector('#sort-select')?.value || 'none';
 
-  // year-from/year-to = antal spillere (min/max players)
-  const playersFrom = Number(document.querySelector('#year-from')?.value) || 0;
-  const playersTo = Number(document.querySelector('#year-to')?.value) || Infinity;
+  // players-min/players-max = antal spillere (min/max players)
+  const playersFrom = Number(document.querySelector('#players-min')?.value) || 0;
+  const playersTo = Number(document.querySelector('#players-max')?.value) || Infinity;
   
   // rating-from/rating-to = spilletid (min/max playtime in minutes)
   const playtimeFrom = Number(document.querySelector('#rating-from')?.value) || 0;
