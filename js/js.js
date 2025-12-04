@@ -79,7 +79,7 @@ function renderIntroCard(game) {
       ${INTRO_BADGE_TEXT ? `<span class="corner-badge">${INTRO_BADGE_TEXT}</span>` : ''}
       <img src="${game.image}" alt="Poster of ${game.title}" class="game-poster" />
       <div class="game-info">
-        <h3>${game.title}  <p class="game-rating">${game.rating}</p> <span class="game-shelf">${game.shelf ? '('+game.shelf+')' : ''}</span></h3>
+        <h3>${game.title}  <p class="game-rating">⭐${game.rating}</p> <span class="game-shelf">${game.shelf ? '('+game.shelf+')' : ''}</span></h3>
       </div>
     </article>
   `;
@@ -112,12 +112,12 @@ function displayGame(game) {
       <img src="${game.image}" alt="Poster of ${escapeHtml(game.title)}" class="game-poster" />
       <div class="game-info">
         <h3>${escapeHtml(game.title)} <span class="game-shelf">${game.shelf ? ''+escapeHtml(game.shelf)+'' : ''}</span></h3>
-        <p class="game-genre">${escapeHtml(game.genre)}</p>
-        <p class="game-rating"> ${game.rating}</p>
-        <p class="game-players"><strong>Players:</strong> ${game.players.min}-${game.players.max} • <strong>Playtime:</strong> ${game.playtime}m</p>
+        </p> <p class="game-properties"> 👤${game.players.min}-${game.players.max} ⏳${game.playtime} ⭐${game.rating}</p>
       </div>
     </article>
   `;
+
+  // <p class="game-genre">${escapeHtml(game.genre)}</p>
 
   list.insertAdjacentHTML('beforeend', html);
   const newCard = list.lastElementChild;
