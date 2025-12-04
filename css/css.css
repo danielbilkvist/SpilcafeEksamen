@@ -6,7 +6,7 @@
   --red: #B9130D;
   --white: #FDFDFD;
   --tan: #D8D1C3;
-  --secondary-light: #3c4043;
+  --grey: #8D8D8D;
   --text: #1A1C1E;
 
   --bg: #F3F0E7;
@@ -595,7 +595,7 @@ dialog#movie-dialog::backdrop {
 
 #dialog-content .movie-year {
   display: inline-block;
-  background: var(--secondary-light);
+  background: var(--grey);
   color: var(--red);
   padding: 0.25rem 0.75rem;
   border-radius: 0.5rem;
