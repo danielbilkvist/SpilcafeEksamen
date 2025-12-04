@@ -53,6 +53,7 @@ body {
 main {
   max-width: min(1400px, 95vw);
   margin: 0 auto;
+  overflow: hidden;
   /*padding-top: calc(var(--header-height, 4rem) + 1rem);*/
 
   /* Flexbox layout for three intro cards (left, center, right) */
