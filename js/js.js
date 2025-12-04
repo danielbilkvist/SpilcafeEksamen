@@ -30,8 +30,8 @@ function initApp() {
   if (playFrom) playFrom.addEventListener("input", filterGames);
   if (playTo) playTo.addEventListener("input", filterGames);
 
-  const ratingFrom = document.querySelector("#rating-from");
-  const ratingTo = document.querySelector("#rating-to");
+  const ratingFrom = document.querySelector("#time-min");
+  const ratingTo = document.querySelector("#time-max");
   if (ratingFrom) ratingFrom.addEventListener("input", filterGames);
   if (ratingTo) ratingTo.addEventListener("input", filterGames);
 
@@ -173,8 +173,8 @@ function clearAllFilters() {
   const sort = document.querySelector('#sort-select'); if (sort) sort.value = 'none';
   const y1 = document.querySelector('#players-min'); if (y1) y1.value = '';
   const y2 = document.querySelector('#players-max'); if (y2) y2.value = '';
-  const r1 = document.querySelector('#rating-from'); if (r1) r1.value = '';
-  const r2 = document.querySelector('#rating-to'); if (r2) r2.value = '';
+  const r1 = document.querySelector('#time-min'); if (r1) r1.value = '';
+  const r2 = document.querySelector('#time-max'); if (r2) r2.value = '';
   filterGames();
 }
 
@@ -189,8 +189,8 @@ function filterGames() {
   const playersTo = Number(document.querySelector('#players-max')?.value) || Infinity;
   
   // rating-from/rating-to = spilletid (min/max playtime in minutes)
-  const playtimeFrom = Number(document.querySelector('#rating-from')?.value) || 0;
-  const playtimeTo = Number(document.querySelector('#rating-to')?.value) || Infinity;
+  const playtimeFrom = Number(document.querySelector('#time-min')?.value) || 0;
+  const playtimeTo = Number(document.querySelector('#time-max')?.value) || Infinity;
 
   if (searchValue) {
     filtered = filtered.filter(g => (g.title || '').toLowerCase().includes(searchValue) || (g.description || '').toLowerCase().includes(searchValue));
