@@ -149,13 +149,27 @@ main {
 .filterbartop {
   background: var(--bg-card);
   border-radius: var(--radius);
-  padding: 1rem;
+  padding: 0.5rem;
   margin-top: 0rem;
   box-shadow: var(--shadow-lg);
   border: 1px solid rgba(172, 198, 201, 0.1);
+  background-color: var(--red);
 
   width: 100%;
   z-index: 500;
+}
+
+.genrebar {
+  background: var(--bg-card);
+  border-radius: var(--radius);
+  padding: 0.5rem;
+  margin-top: 1rem;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid rgba(172, 198, 201, 0.1);
+  background-color: var(--red);
+
+  width: 100%;
+  z-index: 600;
 }
 
 .filterbarbot {
@@ -223,7 +237,6 @@ main {
   display: grid;
   grid-template-columns: 1fr;
   gap: 1rem;
-  margin-bottom: 1rem;
 }
 
 .filter-row-ranges {
@@ -236,7 +249,6 @@ main {
 .filter-group {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
 }
 
 .filter-group label {
@@ -269,7 +281,18 @@ main {
 
 /* Input felter styling */
 #search-input,
-#genre-select,
+#genre-select {
+  background: var(--bg-card);
+  color: var(--text);
+  border: 1px solid rgba(172, 198, 201, 0.3);
+  border-radius: calc(var(--radius) * 0.5);
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  transition: var(--transition);
+  width: 100%;
+}
+
+
 #sort-select,
 #players-min,
 #players-max,
