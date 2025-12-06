@@ -377,6 +377,25 @@ header h2 {
   color: var(--white);
 }
 
+#top-btn {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  background: var(--red);
+  color: var(--white);
+  border: none;
+  border-radius: 50%;
+  width: 5rem;
+  height: 5rem;
+  cursor: pointer;
+  z-index: 999;
+  transition: var(--transition);
+}
+
+#top-btn:hover {
+  transform: scale(1.2);
+}
+
 footer {
   background: var(--red);
   color: var(--white);

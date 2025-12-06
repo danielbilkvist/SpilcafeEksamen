@@ -156,6 +156,28 @@ function populateGenreDropdown() {
   [...genres].sort().forEach(g => genreSelect.insertAdjacentHTML('beforeend', `<option value="${g}">${g}</option>`));
 }
 
+// Back to top button
+const backToTopBtn = document.querySelector("#top-btn");
+
+if (backToTopBtn) {
+  // Show when scroll
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 200) {
+      backToTopBtn.style.display = "block";
+    } else {
+      backToTopBtn.style.display = "none";
+    }
+  });
+
+  // Scroll to top when clicked
+  backToTopBtn.addEventListener("click", () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  });
+}
+
 // Overlay card in modal dialog
 function showGameModal(game) {
   const dialogContent = document.querySelector('#dialog-content');
