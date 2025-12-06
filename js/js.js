@@ -53,7 +53,7 @@ function initApp() {
 
 // Fetch games from provided JSON
 async function getGames() {
-  const url = "https://raw.githubusercontent.com/cederdorff/race/refs/heads/master/data/games.json";
+  const url = "games.json";
   try {
     const res = await fetch(url);
     allGames = await res.json();
@@ -70,7 +70,7 @@ async function getGames() {
   if (introGame) renderIntroCard(introGame);
 }
 
-// render a small card into #intro
+// Render GOTW card
 function renderIntroCard(game) {
   const intro = document.querySelector("#intro");
   if (!intro) return;
@@ -97,8 +97,6 @@ function renderIntroCard(game) {
     }
   });
 }
-
-
 
 //Shortens long text with "..."
 function truncate(str, n) {
@@ -166,28 +164,6 @@ function populateGenreDropdown() {
   }
   genreSelect.innerHTML = `<option value="all">Alle genrer</option>`;
   [...genres].sort().forEach(g => genreSelect.insertAdjacentHTML('beforeend', `<option value="${g}">${g}</option>`));
-}
-
-// Back to top button
-const backToTopBtn = document.querySelector("#top-btn");
-
-if (backToTopBtn) {
-  // Show when scroll
-  window.addEventListener("scroll", () => {
-    if (window.scrollY > 200) {
-      backToTopBtn.style.display = "block";
-    } else {
-      backToTopBtn.style.display = "none";
-    }
-  });
-
-  // Scroll to top when clicked
-  backToTopBtn.addEventListener("click", () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth"
-    });
-  });
 }
 
 // Overlay card in modal dialog
@@ -275,3 +251,24 @@ function filterGames() {
   displayGames(filtered);
 }
 
+// Back to top button
+const backToTopBtn = document.querySelector("#top-btn");
+
+if (backToTopBtn) {
+  // Show when scroll
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 200) {
+      backToTopBtn.style.display = "block";
+    } else {
+      backToTopBtn.style.display = "none";
+    }
+  });
+
+  // Scroll to top when clicked
+  backToTopBtn.addEventListener("click", () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  });
+}
