@@ -124,7 +124,7 @@ main {
   
 }
   
-/* Rotating burst - Keyframe */
+/* Rotating Burst with Keyframe */
 @keyframes rotate360 {
   from {
     transform: translate(-50%, -50%) rotate(0deg);
@@ -139,10 +139,10 @@ main {
 }
 
 .select-filters {
-display: grid;
-grid-template-columns: 1fr 1fr;
-gap: 1rem;
-margin-top: 1rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-top: 1rem;
 }
 
 .advanced-filter {
@@ -202,30 +202,10 @@ margin-top: 1rem;
   display: flex;
 }
 
-/* Filter rækker */
-/* .filter-row-main {
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  gap: 1rem;
-} */
-
 .filter-row-ranges {
   display: flex;
   flex-direction: column;
   gap: 1rem;
-}
-
-/* Filter grupper */
-.filter-group {
-  display: flex;
-  flex-direction: column;
-}
-
-.filter-group label {
-  font-size: 0.875rem;
-  font-weight: 600;
-  color: var(--text);
-  display: block;
 }
 
 /* Range grupper */
@@ -304,11 +284,6 @@ margin-top: 1rem;
   cursor: pointer;
 }
 
-/* Search group særlig styling */
-.search-group {
-  grid-column: 1 / 2;
-}
-
 /* Header */
 header {
   background: var(--red);
@@ -325,15 +300,8 @@ header {
 
 header h1 {
   font-size: 3rem;
-  font-weight: 700;
-  letter-spacing: -0.025em;
-  color: var(--white);
-}
-
-header h2 {
-  font-size: clamp(1rem, 3vw, 1,5rem);
-  font-weight: 600;
-  letter-spacing: -0.025em;
+  font-weight: 200;
+  letter-spacing: 0rem;
   color: var(--white);
 }
 
