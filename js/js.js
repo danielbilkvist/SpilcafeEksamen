@@ -77,7 +77,7 @@ function renderIntroCard(game) {
   // clear previous intro content so switching id is visible
   intro.innerHTML = '';
   const html = `
-    <article class="ugens-spil" tabindex="0">
+    <article class="gotw" tabindex="0">
       ${INTRO_BADGE_TEXT ? `<span class="corner-badge">${INTRO_BADGE_TEXT}</span>` : ''}
       <img src="${game.image}" alt="Poster of ${game.title}" class="game-poster" />
       <div class="game-info">
@@ -88,6 +88,7 @@ function renderIntroCard(game) {
   intro.insertAdjacentHTML('beforeend', html);
 }
 
+//Shortens long text with "..."
 function truncate(str, n) {
   return str && str.length > n ? str.slice(0, n-1) + '…' : str;
 }
@@ -154,7 +155,6 @@ function populateGenreDropdown() {
   genreSelect.innerHTML = `<option value="all">Alle genrer</option>`;
   [...genres].sort().forEach(g => genreSelect.insertAdjacentHTML('beforeend', `<option value="${g}">${g}</option>`));
 }
-
 
 // Overlay card in modal dialog
 function showGameModal(game) {
@@ -237,7 +237,7 @@ function filterGames() {
   else if (sortValue === 'playtime') filtered.sort((a,b) => (b.playtime||0) - (a.playtime||0));
   else if (sortValue === 'rating') filtered.sort((a,b) => (b.rating||0) - (a.rating||0));
 
-// FInal display of filtered games
+// Final display of filtered games
   displayGames(filtered);
 }
 

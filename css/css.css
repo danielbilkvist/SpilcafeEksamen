@@ -1,8 +1,5 @@
-/* =====================
-   CSS VARIABLES
-   ===================== */
 :root {
-  /* Colors */
+  /* Color variables */
   --red: #B9130D;
   --white: #FDFDFD;
   --tan: #D8D1C3;
@@ -22,9 +19,7 @@
   --transition: 150ms ease;
 }
 
-/* =====================
-   GLOBAL STYLES
-   ===================== */
+/* Global Styling */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -40,9 +35,7 @@ body {
   min-height: 100vh;
 }
 
-/* =====================
-   LAYOUT (main container)
-   ===================== */
+/* Main Styling */
 main {
   max-width: min(1400px, 95vw);
   margin: 0 auto;
@@ -51,10 +44,8 @@ main {
   /* padding: 3rem 0; */
 }
 
-/* =====================
-   Intro
-   ===================== */
 
+/* Background */
   #wallpaper {
     position: fixed;
     z-index: -1000;
@@ -62,7 +53,8 @@ main {
     left:0px;
   }
 
-  .ugens-spil {
+/* Game of the week styling */
+  .gotw {
   background: var(--bg-card);
   border-radius:  var(--radius);
   box-shadow: var(--shadow);
@@ -76,16 +68,16 @@ main {
   background-color: var(--bg-card);
 }
 
-.ugens-spil:hover {
+.gotw:hover {
   border: 3px solid var(--red);
 }
-.ugens-spil:focus {
+.gotw:focus {
   outline: 3px solid var(--white);
   outline-offset: 2px;
 }
 
 /* Corner badge for intro card */
-.ugens-spil .corner-badge {
+.gotw .corner-badge {
   position: absolute;
   top: -2rem;
   left: -2rem;
@@ -112,9 +104,8 @@ main {
    1px  1px 0 var(--text);
 }
 
-
-/* burst */
-.ugens-spil::before {
+/* Rotating burst */
+.gotw::before {
   content: '';
   position: absolute;
   top: 50%;
@@ -132,7 +123,7 @@ main {
   
 }
   
-/* Showcase Keyframe */
+/* Rotating burst - Keyframe */
 @keyframes rotate360 {
   from {
     transform: translate(-50%, -50%) rotate(0deg);
@@ -146,7 +137,7 @@ main {
 /* =====================
    FILTERBAR (SØG/SORT/FILTER)
    ===================== */
-.filterbartop {
+/* .filterbartop {
   background: var(--bg-card);
   border-radius: var(--radius);
   padding: 0.2rem;
@@ -156,9 +147,28 @@ main {
   background-color: var(--grey);
   width: auto;
   z-index: 500;
+} */
+
+.searchbar {
+  /* background: var(--bg-card);
+  border-radius: var(--radius);
+  padding: 0.2rem;
+  margin-top: 0rem;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid rgba(172, 198, 201, 0.1);
+  background-color: var(--grey);
+  width: auto; */
+  z-index: 500;
 }
 
-.genrebar {
+.select-filters {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 1rem;
+margin-top: 1rem;
+}
+
+/* .genrebar {
   background: var(--bg-card);
   border-radius: var(--radius);
   padding: 0.2rem;
@@ -166,10 +176,9 @@ main {
   box-shadow: var(--shadow-lg);
   border: 1px solid rgba(172, 198, 201, 0.1);
   background-color: var(--grey);
-
   width: 100%;
   z-index: 600;
-}
+} */
 
 .filterbarbot {
   background: var(--bg-card);
@@ -178,12 +187,8 @@ main {
   margin-top: 1rem;
   box-shadow: var(--shadow-lg);
   border: 1px solid rgba(172, 198, 201, 0.1);
-  position: absolute;
-  position: fixed;
-  width: 20rem;
-  z-index: 1100;
-  right: 1rem;
-  bottom: 1rem;
+  width: 100%;
+  z-index: 400;
 }
 
 .filterbarbot-toggle {
@@ -204,8 +209,9 @@ main {
 }
 
 .filterbarbot-toggle:hover {
-  background: var(--bg);
+  background: var(--red);
   border-color: var(--white);
+  color: var(--white);
 }
 
 .filterbarbot-toggle::after {
@@ -232,11 +238,11 @@ main {
 }
 
 /* Filter rækker */
-.filter-row-main {
+/* .filter-row-main {
   display: grid;
   grid-template-columns: 2fr 1fr;
   gap: 1rem;
-}
+} */
 
 .filter-row-ranges {
   display: flex;
@@ -379,11 +385,7 @@ footer {
   margin-top: 4rem;
 }
 
-/* (main er allerede defineret ovenfor - dublet fjernet) */
-
-/* =====================
-   MOVIE GRID & CARDS
-   ===================== */
+/* Movie grid og game cards */
 #game-list {
   display: grid;
   grid-template-columns: repeat(1fr);
@@ -391,6 +393,7 @@ footer {
   padding: 2rem 0;
 }
 
+/* @media screen sizes */
 @media (min-width: 400px) {
   #game-list {
     grid-template-columns: repeat(2, 1fr);
@@ -412,6 +415,7 @@ footer {
   }
 }
 
+/* Card Design */
 .game-card {
   background: var(--bg-card);
   border-radius: var(--radius);
@@ -504,9 +508,7 @@ footer {
   color: var(--text);
 }
 
-/* =====================
-   GAME DIALOG
-   ===================== */
+/* Game Overlay Deisgn */
 dialog#game-dialog {
   border: none;
   border-radius: var(--radius);
@@ -655,9 +657,7 @@ dialog#game-dialog::backdrop {
   font-style: italic;
 }
 
-/* =====================
-   CLEAR FILTERS BUTTON
-   ===================== */
+/* CLear Filter Button Design */
 #clear-filters {
   background: linear-gradient(135deg, var(--error) 0%, var(--error) 100%);
   color: white;
@@ -708,9 +708,7 @@ dialog#game-dialog::backdrop {
   border-radius: var(--radius);
 }
 
-/* =====================
-   RESPONSIVE FILTERBAR
-   ===================== */
+/* Responsive Filterbar */
 @media (max-width: 900px) {
   .filter-row-main {
     grid-template-columns: 1fr;
@@ -747,30 +745,9 @@ dialog#game-dialog::backdrop {
   }
 }
 
-/* =====================
-   RESPONSIVE & ACCESSIBILITY
-   ===================== */
-
 /* Focus styles for keyboard navigation */
 .game-card:focus-visible,
 #close-dialog:focus-visible {
   outline: 3px solid var(--red);
   outline-offset: 2px;
-}
-
-/* =====================
-   DARK MODE ADJUSTMENTS
-   ===================== */
-@media (prefers-color-scheme: dark) {
-  .game-shelf {
-    background: var(--red);
-    color: var(--red);
-  }
-  #dialog-content .game-shelf {
-    background: var(--red);
-    color: var(--red);
-  }
-  #close-dialog {
-    background: rgba(23, 23, 23, 0.9);
-  }
 }
