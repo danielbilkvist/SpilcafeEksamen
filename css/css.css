@@ -79,8 +79,8 @@ main {
 /* Corner badge for intro card */
 .gotw .corner-badge {
   position: absolute;
-  top: -2rem;
-  left: -2rem;
+  top: -1rem;
+  left: -1rem;
   width: 6rem;
   height: 6rem;
   display: flex;
@@ -295,13 +295,61 @@ header {
   z-index: 1000;
   transition: var(--transition);
   font-family: "Lobster", cursive;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
 }
 
+/* Tekst */
 header h1 {
   font-size: 3rem;
   font-weight: 200;
   letter-spacing: 0rem;
   color: var(--white);
+}
+
+@media (max-width: 500px) {
+  header h1 {
+    font-size: 2rem;
+  }
+}
+
+
+/* LOGO */
+header img#logo {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 6rem;
+  height: auto;
+  margin-bottom: 0.5rem; 
+}
+
+@media (max-width: 500px) {
+  header img#logo {
+    width: 4rem;
+    left: 0.5rem;
+  }
+}
+
+/* Burger Menu */
+header img#burger {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3rem;
+  height: auto;
+  margin-bottom: 0.5rem; 
+}
+
+@media (max-width: 500px) {
+  header img#burger {
+    width: 2rem;
+    right: 1rem;
+  }
 }
 
 /* Back to top button */
@@ -318,6 +366,15 @@ header h1 {
   cursor: pointer;
   z-index: 999;
   transition: var(--transition);
+}
+
+@media (max-width: 500px) {
+  #top-btn {
+    width: 3.5rem;
+    height: 3.5rem;
+    bottom: 1rem;
+    right: 1rem;
+  }
 }
 
 #top-btn:hover {
@@ -372,6 +429,9 @@ footer {
   transition: var(--transition);
   cursor: pointer;
   border: 1px solid rgba(255, 255, 255, 0.2);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 .game-card:hover {
@@ -399,6 +459,9 @@ footer {
 
 .game-info {
   padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
 }
 
 .game-info h3 {
@@ -437,7 +500,7 @@ footer {
   justify-content: space-between;
   align-items: center;
   gap: 0.5rem;
-  margin-top: 0.5rem;
+  margin-top: auto;
 }
 
 .game-property {
@@ -620,7 +683,7 @@ dialog#game-dialog::backdrop {
 }
 
 #clear-filters:hover {
-  transform: translateY(-2px);
+  transform: translateY(-0.1rem);
   box-shadow: var(--shadow-lg);
   background: linear-gradient(135deg, var(--red) 0%, var(--red) 100%);
 }
