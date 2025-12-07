@@ -186,6 +186,7 @@ function showGameModal(game) {
   `;
   const dlg = document.querySelector('#game-dialog');
   if (dlg && typeof dlg.showModal === 'function') dlg.showModal();
+    // dlg.scrollIntoView({ behavior: "auto", block: "nearest" });
 }
 // Properties jeg gerne vil bruge, men som ikke er designet i min figma prototype. Så kan de bruges senere når jeg ved hvordan det ser godt ud:)
       //   <div class="game-properties">
